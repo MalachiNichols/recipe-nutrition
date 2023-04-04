@@ -1,8 +1,10 @@
 import process from "process";
 import React from "react";
 import { useState } from "react";
+import Label from "./Label";
 
 const Nutrition = () => {
+  const [labelReady, setLabelReady] = useState(false)
   const callNinja = async (e) => {
     e.preventDefault();
     console.log(process.env.REACT_APP_API_KEY);
@@ -19,15 +21,20 @@ const Nutrition = () => {
       res.json().then((data) => {
         console.log(data);
         alert(JSON.stringify(data));
-      });
-    });
-  };
+      })
+    })
+    .catch(err => console.log(err))
+    .finally(() => setLabelReady(true))
+  }
 
   return (
-    <form onSubmit={callNinja}>
-      <input type="text" name="query"></input>
-      <input type="submit"></input>
-    </form>
+    <>
+      <form onSubmit={callNinja}>
+        <input type="text" name="query"></input>
+        <input type="submit"></input>
+      </form>
+        {labelReady && <Label />}
+    </>
   );
 };
 
