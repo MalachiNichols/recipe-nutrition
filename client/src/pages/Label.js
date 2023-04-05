@@ -1,12 +1,12 @@
 import React from "react";
 
-const Label = () => {
+const Label = ({ nutritionValues }) => {
   return (
     <section class="performance-facts">
       <header class="performance-facts__header">
         <h1 class="performance-facts__title">Nutrition Facts</h1>
-        <p>Serving Size 1/2 cup (about 82g)</p>
-        <p>Serving Per Container 8</p>
+        <p>Serving Size {Math.round(nutritionValues.servingSize)}g</p>
+        {/* <p>Serving Per Container 8</p> */}
       </header>
       <table class="performance-facts__table">
         <thead>
@@ -20,9 +20,9 @@ const Label = () => {
           <tr>
             <th colspan="2">
               <b>Calories</b>
-              200
+              {Math.round(nutritionValues.calories)}
             </th>
-            <td>Calories from Fat 130</td>
+            <td>Calories from Fat {Math.round(nutritionValues.totalFat*9)}</td>
           </tr>
           <tr class="thick-row">
             <td colspan="3" class="small-info">
@@ -32,74 +32,76 @@ const Label = () => {
           <tr>
             <th colspan="2">
               <b>Total Fat</b>
-              14g
+              {Math.round(nutritionValues.totalFat)}g
             </th>
             <td>
-              <b>22%</b>
+              <b>{Math.round(nutritionValues.totalFat/78*100)}%</b>
             </td>
           </tr>
           <tr>
             <td class="blank-cell"></td>
-            <th>Saturated Fat 9g</th>
+            <th>Saturated Fat {Math.round(nutritionValues.satFat)}g</th>
             <td>
-              <b>22%</b>
+              <b>{Math.round(nutritionValues.satFat/20*100)}%</b>
             </td>
           </tr>
           <tr>
-            <td class="blank-cell"></td>
+            {/* <td class="blank-cell"></td>
             <th>Trans Fat 0g</th>
-            <td></td>
+            <td></td> */}
           </tr>
           <tr>
             <th colspan="2">
               <b>Cholesterol</b>
-              55mg
+              {Math.round(nutritionValues.cholesterol)}mg
             </th>
             <td>
-              <b>18%</b>
+              <b>{Math.round(nutritionValues.cholesterol/300*100)}%</b>
             </td>
           </tr>
           <tr>
             <th colspan="2">
               <b>Sodium</b>
-              40mg
+              {Math.round(nutritionValues.sodium)}mg
             </th>
             <td>
-              <b>2%</b>
+              <b>{Math.round(nutritionValues.sodium/2300*100)}%</b>
             </td>
           </tr>
           <tr>
             <th colspan="2">
               <b>Total Carbohydrate</b>
-              17g
+              {Math.round(nutritionValues.carbs)}g
             </th>
             <td>
-              <b>6%</b>
+              <b>{Math.round(nutritionValues.carbs/275*100)}%</b>
             </td>
           </tr>
           <tr>
             <td class="blank-cell"></td>
-            <th>Dietary Fiber 1g</th>
+            <th>Dietary Fiber {Math.round(nutritionValues.fiber)}g</th>
             <td>
-              <b>4%</b>
+              <b>{Math.round(nutritionValues.fiber/28*100)}%</b>
             </td>
           </tr>
           <tr>
             <td class="blank-cell"></td>
-            <th>Sugars 14g</th>
+            <th>Sugars {Math.round(nutritionValues.sugar)}g</th>
             <td></td>
           </tr>
           <tr class="thick-end">
             <th colspan="2">
               <b>Protein</b>
-              3g
+              {Math.round(nutritionValues.protein)}g
             </th>
-            <td></td>
+            <td>
+              <b>{Math.round(nutritionValues.protein/50*100)}%</b>
+            </td>
           </tr>
         </tbody>
       </table>
 
-      <table class="performance-facts__table--grid">
+      {/* <table class="performance-facts__table--grid">
         <tbody>
           <tr>
             <td colspan="2">Vitamin A 10%</td>
@@ -169,7 +171,7 @@ const Label = () => {
       <p class="small-info">Calories per gram:</p>
       <p class="small-info text-center">
         Fat 9 &bull; Carbohydrate 4 &bull; Protein 4
-      </p>
+      </p> */}
     </section>
   );
 };
